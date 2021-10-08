@@ -1,0 +1,41 @@
+{% extends 'mytemplates/base.html' %}
+{% load static %}
+
+{% block content %}
+
+  
+    <div class="text-center mb-4">
+        <h1 class="fw-normal">TO-DO APP</h1>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
+            <form class="d-flex" action="" method="POST">
+              {% csrf_token %}
+              
+              <input class="form-control me-3" name="title" type="text" placeholder="Add task to list" aria-label="Search">
+              <button type ="submit" class="btn btn-outline-success" role="button" >Add</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+      {% for todo in todos reversed %}
+      
+        <ul id="myUL">
+          <div class="alert alert-light alert-dismissible fade show">
+    
+          <li><a style = "font-size: 130%;">{{todo.title}}</a> 
+          <div class = "position-absolute top-50 start-50 translate-middle">
+          <button type = "button" class="btn btn-danger"><a style="text-decoration: none;color:seashell;" href="delete/{{todo.id}}">Remove</a></button></li>
+          </div>
+        </div>
+       </ul>
+      </div>
+    
+      {% endfor %}
+
+{% endblock %}
