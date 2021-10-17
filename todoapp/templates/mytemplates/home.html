@@ -2,37 +2,93 @@
 {% load static %}
 
 {% block content %}
-
-  
-    <div class="text-center mb-4">
-        <h1 class="fw-normal">TO-DO APP</h1>
-    </div>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-        
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            
-            <form class="d-flex" action="" method="POST">
-              {% csrf_token %}
-              
-              <input class="form-control me-3" name="title" type="text" placeholder="Add task to list" aria-label="Search">
-              <button type ="submit" class="btn btn-outline-success" role="button" >Add</button>
-            </form>
-          </div>
-        </div>
-      </nav>
-
-      {% for todo in todos reversed %}
-      
-        <ul id="myUL">
-          <div class="alert alert-light alert-dismissible fade show">
     
-          <li><a style = "font-size: 130%;">{{todo.title}}</a> 
-          <div class = "position-absolute top-50 start-50 translate-middle">
-          <button type = "button" class="btn btn-danger"><a style="text-decoration: none;color:seashell;" href="delete/{{todo.id}}">Remove</a></button></li>
-          </div>
+<h1 class="fw-normal">TO-DO APP</h1>
+    
+<div class="mysection">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-light navbar-section">
+      <div class="container-fluid">
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          
+          <form class="d-flex" action="" method="POST">
+            {% csrf_token %}
+            
+            <input class="form-control me-3 navbar-input" name="title" type="text" placeholder="Add task to list" aria-label="Search">
+            <button type ="submit" class="btn btn-outline-success add-button" role="button" >Add</button>
+          </form>
         </div>
+      </div>
+    </nav>
+ 
+    {% for todo in todos reversed %}
+    <div class="list-class">
+      <ul id="myUL">
+        <div class="alert alert-light alert-dismissible fade show list-section">
+  
+        <a style = "font-size: 130%;">{{todo.title}}</a> 
+        <div class = "position-absolute top-50 start-50 translate-middle">
+        <button type = "button" class="btn btn-danger button-section"><a style="text-decoration: none;color:seashell;" href="delete/{{todo.id}}">Remove</a></button>
+        </div>
+      
+      </ul>
+    </div> 
+    {% endfor %}
+  </div>
+<style>
+  
+  h1{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+ 
+  body{
+    font-family: 'Poppins', sans-serif;
+    background-color: rgb(250, 222, 231);
+  }
+
+  .list-section{
+    margin-left: 10px;
+    padding: 5px;
+    color: black;
+
+  }
+
+  .navbar-section{
+    margin-left: 40px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    width: 600px;
+    border: 1px solid rgb(129, 129, 129);
+ 
+  }
+ 
+ .mysection{
+  background-color: white;
+  margin-left: 200px;
+  width: 750px;  
+  border-radius: 20px; 
+  margin-left: 300px;
+  padding: 40px;
+ }
+ .navbar-input{
+  margin-left: 20px;
+  width: 350px;
+  border-radius: 10px;
+}
+.add-button{
+  margin-left: 120px
+}
+.button-section{
+  margin-left: 500px;
+  border-radius: 10px;
+}
+</style>
+
+
+{% endblock %}
        </ul>
       </div>
     
